@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-*0$*3io2$uga4)z$x5w57&$4xa=!s-(e1^vi_+qbtg!0a3*mu-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['170.187.229.248', '*', 'localhost']
+
 
 
 # Application definition
@@ -78,10 +79,15 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+ROOT_URLCONF = 'SEA_SHOP.urls'
 
 AUTH_USER_MODEL = "Custom_User.CustomUser"  
+CORS_ALLOWED_ORIGINS = (
+    "http://localhost:3000",
+    "http://localhost:8000",
+)
 
-ROOT_URLCONF = 'SEA_SHOP.urls'
+CSRF_TRUSTED_ORIGINS = ["http://localhost:3000", "http://192.168.56.1:3000/"]
 
 TEMPLATES = [
     {
