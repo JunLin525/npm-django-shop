@@ -24,7 +24,9 @@ from django.urls import path, include
 from django.conf import settings  
 from django.conf.urls.static import static  
 from .views import GoogleLogin
+from .views import Home
 urlpatterns = [
+    path('', Home.as_view(), name='home'),
     path('admin/', admin.site.urls),
     path('dj-rest-auth/', include('dj_rest_auth.urls')),
     path('dj-rest-auth/registration/', include('dj_rest_auth.registration.urls')),

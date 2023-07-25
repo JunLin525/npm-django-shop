@@ -1,0 +1,25 @@
+<!-- templates/home.html-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <Title>{% block title %} API LIST. {% endblock title %}</Title>
+    </head>
+    <body>
+        <h2>API LIST</h2>
+        <div class="container">
+            {% block content %}
+                <ol>
+                    <ul><a href="">Home page</a></ul>
+                    <ul><a href="admin/">admin board setting</a></ul>
+                    <ul><a href="dj-rest-auth/registration/">registration api </a></ul>
+                    <ul><a href="dj-rest-auth/password/reset/">reset api</a></ul>
+                    <ul><a href="api-jwt/token/">jwt token api</a></ul>
+                    <ul><a href="api-jwt/token/refresh/">jwt token fresh</a></ul>
+                    <ul><a href="apis/Locate/">Locate專案API頁面(10-13)</a></ul>
+                    <ul><a href="apis/foodie-Area/">Shop專案API頁面(10-13)</a></ul>
+                </ol>
+            {% endblock content %}
+        </div>
+    </body>
+</html>
