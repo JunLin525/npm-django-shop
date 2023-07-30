@@ -29,7 +29,6 @@ DEBUG = True
 ALLOWED_HOSTS = ['170.187.229.248', '*', 'localhost']
 
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -39,16 +38,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #Third Party
+    # Third Party
     'rest_framework',
     'corsheaders',
     'rest_framework_simplejwt',
     'django_filters',
     'dj_rest_auth',
-    #'rest_auth',
+    'drf_spectacular',
+
+    # 'rest_auth',
 
     'rest_framework.authtoken',
-        ### django-auth
+    # django-auth
     'dj_rest_auth.registration',
     'django.contrib.sites',
     'allauth',
@@ -59,9 +60,9 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
 
 
-        ## django auth
+    # django auth
 
-    ## local app
+    # local app
     'Apis.apps.ApisConfig',
     'foodie.apps.FoodieConfig',
     'Locate.apps.LocateConfig',
@@ -72,7 +73,7 @@ SITE_ID = 1
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'corsheaders.middleware.CorsMiddleware', ## Cors headers
+    'corsheaders.middleware.CorsMiddleware',  # Cors headers
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -81,7 +82,7 @@ MIDDLEWARE = [
 ]
 ROOT_URLCONF = 'SEA_SHOP.urls'
 
-AUTH_USER_MODEL = "Custom_User.CustomUser"  
+AUTH_USER_MODEL = "Custom_User.CustomUser"
 CORS_ALLOWED_ORIGINS = (
     "http://localhost:3000",
     "http://localhost:8000",
@@ -92,7 +93,7 @@ CSRF_TRUSTED_ORIGINS = ["http://localhost:3000", "http://192.168.56.1:3000/"]
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / "templates"],  
+        'DIRS': [BASE_DIR / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -110,7 +111,7 @@ WSGI_APPLICATION = 'SEA_SHOP.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-##這邊使用supabas，除了引擎以外其他會隨著平台不同有所變更，可以看平台的指引，railway也很多人用。
+# 這邊使用supabas，除了引擎以外其他會隨著平台不同有所變更，可以看平台的指引，railway也很多人用。
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -163,8 +164,8 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-MEDIA_URL = "/media/"  
-MEDIA_ROOT = BASE_DIR / "media"  
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
 
 
 # RESTFUL FRAMEWORK

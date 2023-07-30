@@ -1,0 +1,1457 @@
+openapi: 3.0.3
+info:
+  title: Website API View
+  version: 1.0.0
+  description: A Simple website to learn about DRF
+paths:
+  /api-jwt/token/:
+    post:
+      operationId: api_jwt_token_create
+      description: |-
+        Takes a set of user credentials and returns an access and refresh JSON web
+        token pair to prove the authentication of those credentials.
+      tags:
+      - api-jwt
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenObtainPair'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenObtainPair'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TokenObtainPair'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenObtainPair'
+          description: ''
+  /api-jwt/token/refresh/:
+    post:
+      operationId: api_jwt_token_refresh_create
+      description: |-
+        Takes a refresh type JSON web token and returns an access type JSON web
+        token if the refresh token is valid.
+      tags:
+      - api-jwt
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenRefresh'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenRefresh'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TokenRefresh'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenRefresh'
+          description: ''
+  /apis/Locate/Comment-Detail/{id}/:
+    get:
+      operationId: apis_Locate_Comment_Detail_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - apis
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'
+          description: ''
+    put:
+      operationId: apis_Locate_Comment_Detail_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - apis
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Comment'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Comment'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Comment'
+        required: true
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'
+          description: ''
+    patch:
+      operationId: apis_Locate_Comment_Detail_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - apis
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedComment'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedComment'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedComment'
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'
+          description: ''
+    delete:
+      operationId: apis_Locate_Comment_Detail_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - apis
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      responses:
+        '204':
+          description: No response body
+  /apis/Locate/Comment_List:
+    get:
+      operationId: apis_Locate_Comment_List_list
+      tags:
+      - apis
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Comment'
+          description: ''
+  /apis/Locate/Shop-Detail/{id}/:
+    get:
+      operationId: apis_Locate_Shop_Detail_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - apis
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shop'
+          description: ''
+    put:
+      operationId: apis_Locate_Shop_Detail_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - apis
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Shop'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Shop'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Shop'
+        required: true
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shop'
+          description: ''
+    patch:
+      operationId: apis_Locate_Shop_Detail_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - apis
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedShop'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedShop'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedShop'
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shop'
+          description: ''
+    delete:
+      operationId: apis_Locate_Shop_Detail_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - apis
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      responses:
+        '204':
+          description: No response body
+  /apis/Locate/Shop-List:
+    get:
+      operationId: apis_Locate_Shop_List_list
+      tags:
+      - apis
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Shop'
+          description: ''
+    post:
+      operationId: apis_Locate_Shop_List_create
+      tags:
+      - apis
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Shop'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Shop'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Shop'
+        required: true
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shop'
+          description: ''
+  /apis/foodie-Area/Area-Detail/{id}/:
+    get:
+      operationId: apis_foodie_Area_Area_Detail_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - apis
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Area'
+          description: ''
+    put:
+      operationId: apis_foodie_Area_Area_Detail_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - apis
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Area'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Area'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Area'
+        required: true
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Area'
+          description: ''
+    patch:
+      operationId: apis_foodie_Area_Area_Detail_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - apis
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedArea'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedArea'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedArea'
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Area'
+          description: ''
+    delete:
+      operationId: apis_foodie_Area_Area_Detail_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - apis
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      responses:
+        '204':
+          description: No response body
+  /apis/foodie-Area/Area-List:
+    get:
+      operationId: apis_foodie_Area_Area_List_list
+      tags:
+      - apis
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Area'
+          description: ''
+    post:
+      operationId: apis_foodie_Area_Area_List_create
+      tags:
+      - apis
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Area'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Area'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Area'
+        required: true
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Area'
+          description: ''
+  /apis/foodie-Area/Reply-Detail/{id}/:
+    get:
+      operationId: apis_foodie_Area_Reply_Detail_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - apis
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Reply'
+          description: ''
+    put:
+      operationId: apis_foodie_Area_Reply_Detail_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - apis
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Reply'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Reply'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Reply'
+        required: true
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Reply'
+          description: ''
+    patch:
+      operationId: apis_foodie_Area_Reply_Detail_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - apis
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedReply'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedReply'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedReply'
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Reply'
+          description: ''
+    delete:
+      operationId: apis_foodie_Area_Reply_Detail_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - apis
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      responses:
+        '204':
+          description: No response body
+  /apis/foodie-Area/Reply-List:
+    get:
+      operationId: apis_foodie_Area_Reply_List_list
+      tags:
+      - apis
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Reply'
+          description: ''
+  /dj-rest-auth/facebook/:
+    post:
+      operationId: dj_rest_auth_facebook_create
+      description: |-
+        class used for social authentications
+        example usage for facebook with access_token
+        -------------
+        from allauth.socialaccount.providers.facebook.views import FacebookOAuth2Adapter
+
+        class FacebookLogin(SocialLoginView):
+            adapter_class = FacebookOAuth2Adapter
+        -------------
+
+        example usage for facebook with code
+
+        -------------
+        from allauth.socialaccount.providers.facebook.views import FacebookOAuth2Adapter
+        from allauth.socialaccount.providers.oauth2.client import OAuth2Client
+
+        class FacebookLogin(SocialLoginView):
+            adapter_class = FacebookOAuth2Adapter
+            client_class = OAuth2Client
+            callback_url = 'localhost:8000'
+        -------------
+      tags:
+      - dj-rest-auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SocialLogin'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SocialLogin'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SocialLogin'
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SocialLogin'
+          description: ''
+  /dj-rest-auth/google/:
+    post:
+      operationId: dj_rest_auth_google_create
+      description: |-
+        class used for social authentications
+        example usage for facebook with access_token
+        -------------
+        from allauth.socialaccount.providers.facebook.views import FacebookOAuth2Adapter
+
+        class FacebookLogin(SocialLoginView):
+            adapter_class = FacebookOAuth2Adapter
+        -------------
+
+        example usage for facebook with code
+
+        -------------
+        from allauth.socialaccount.providers.facebook.views import FacebookOAuth2Adapter
+        from allauth.socialaccount.providers.oauth2.client import OAuth2Client
+
+        class FacebookLogin(SocialLoginView):
+            adapter_class = FacebookOAuth2Adapter
+            client_class = OAuth2Client
+            callback_url = 'localhost:8000'
+        -------------
+      tags:
+      - dj-rest-auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SocialLogin'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SocialLogin'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SocialLogin'
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SocialLogin'
+          description: ''
+  /dj-rest-auth/login/:
+    post:
+      operationId: dj_rest_auth_login_create
+      description: |-
+        Check the credentials and return the REST Token
+        if the credentials are valid and authenticated.
+        Calls Django Auth login method to register User ID
+        in Django session framework
+
+        Accept the following POST parameters: username, password
+        Return the REST Framework Token Object's key.
+      tags:
+      - dj-rest-auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Login'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Login'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Login'
+        required: true
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Token'
+          description: ''
+  /dj-rest-auth/logout/:
+    post:
+      operationId: dj_rest_auth_logout_create
+      description: |-
+        Calls Django logout method and delete the Token object
+        assigned to the current User object.
+
+        Accepts/Returns nothing.
+      tags:
+      - dj-rest-auth
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAuthDetail'
+          description: ''
+  /dj-rest-auth/password/change/:
+    post:
+      operationId: dj_rest_auth_password_change_create
+      description: |-
+        Calls Django Auth SetPasswordForm save method.
+
+        Accepts the following POST parameters: new_password1, new_password2
+        Returns the success/fail message.
+      tags:
+      - dj-rest-auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PasswordChange'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PasswordChange'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PasswordChange'
+        required: true
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAuthDetail'
+          description: ''
+  /dj-rest-auth/password/reset/:
+    post:
+      operationId: dj_rest_auth_password_reset_create
+      description: |-
+        Calls Django Auth PasswordResetForm save method.
+
+        Accepts the following POST parameters: email
+        Returns the success/fail message.
+      tags:
+      - dj-rest-auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PasswordReset'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PasswordReset'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PasswordReset'
+        required: true
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAuthDetail'
+          description: ''
+  /dj-rest-auth/password/reset/confirm/:
+    post:
+      operationId: dj_rest_auth_password_reset_confirm_create
+      description: |-
+        Password reset e-mail link is confirmed, therefore
+        this resets the user's password.
+
+        Accepts the following POST parameters: token, uid,
+            new_password1, new_password2
+        Returns the success/fail message.
+      tags:
+      - dj-rest-auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PasswordResetConfirm'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PasswordResetConfirm'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PasswordResetConfirm'
+        required: true
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAuthDetail'
+          description: ''
+  /dj-rest-auth/registration/:
+    post:
+      operationId: dj_rest_auth_registration_create
+      tags:
+      - dj-rest-auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Register'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Register'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Register'
+        required: true
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Token'
+          description: ''
+  /dj-rest-auth/registration/resend-email/:
+    post:
+      operationId: dj_rest_auth_registration_resend_email_create
+      tags:
+      - dj-rest-auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResendEmailVerification'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ResendEmailVerification'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ResendEmailVerification'
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAuthDetail'
+          description: ''
+  /dj-rest-auth/registration/verify-email/:
+    post:
+      operationId: dj_rest_auth_registration_verify_email_create
+      tags:
+      - dj-rest-auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VerifyEmail'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/VerifyEmail'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/VerifyEmail'
+        required: true
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAuthDetail'
+          description: ''
+  /dj-rest-auth/user/:
+    get:
+      operationId: dj_rest_auth_user_retrieve
+      description: |-
+        Reads and updates UserModel fields
+        Accepts GET, PUT, PATCH methods.
+
+        Default accepted fields: username, first_name, last_name
+        Default display fields: pk, username, email, first_name, last_name
+        Read-only fields: pk, email
+
+        Returns UserModel fields.
+      tags:
+      - dj-rest-auth
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDetails'
+          description: ''
+    put:
+      operationId: dj_rest_auth_user_update
+      description: |-
+        Reads and updates UserModel fields
+        Accepts GET, PUT, PATCH methods.
+
+        Default accepted fields: username, first_name, last_name
+        Default display fields: pk, username, email, first_name, last_name
+        Read-only fields: pk, email
+
+        Returns UserModel fields.
+      tags:
+      - dj-rest-auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserDetails'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UserDetails'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UserDetails'
+        required: true
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDetails'
+          description: ''
+    patch:
+      operationId: dj_rest_auth_user_partial_update
+      description: |-
+        Reads and updates UserModel fields
+        Accepts GET, PUT, PATCH methods.
+
+        Default accepted fields: username, first_name, last_name
+        Default display fields: pk, username, email, first_name, last_name
+        Read-only fields: pk, email
+
+        Returns UserModel fields.
+      tags:
+      - dj-rest-auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedUserDetails'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedUserDetails'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedUserDetails'
+      security:
+      - jwtAuth: []
+      - basicAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDetails'
+          description: ''
+components:
+  schemas:
+    Area:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        Name:
+          type: string
+          maxLength: 120
+        Address:
+          type: string
+          maxLength: 120
+        Country:
+          type: string
+          maxLength: 50
+        Introduction:
+          type: string
+        Picture:
+          type: string
+          format: uri
+      required:
+      - Address
+      - Country
+      - Introduction
+      - Name
+      - Picture
+      - id
+    Comment:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        Title:
+          type: string
+          maxLength: 120
+        Body:
+          type: string
+        Photo:
+          type: string
+          format: uri
+        Store:
+          type: integer
+      required:
+      - Body
+      - Photo
+      - Store
+      - Title
+      - id
+    Login:
+      type: object
+      properties:
+        username:
+          type: string
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+      required:
+      - password
+    PasswordChange:
+      type: object
+      properties:
+        new_password1:
+          type: string
+          maxLength: 128
+        new_password2:
+          type: string
+          maxLength: 128
+      required:
+      - new_password1
+      - new_password2
+    PasswordReset:
+      type: object
+      description: Serializer for requesting a password reset e-mail.
+      properties:
+        email:
+          type: string
+          format: email
+      required:
+      - email
+    PasswordResetConfirm:
+      type: object
+      description: Serializer for confirming a password reset attempt.
+      properties:
+        new_password1:
+          type: string
+          maxLength: 128
+        new_password2:
+          type: string
+          maxLength: 128
+        uid:
+          type: string
+        token:
+          type: string
+      required:
+      - new_password1
+      - new_password2
+      - token
+      - uid
+    PatchedArea:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        Name:
+          type: string
+          maxLength: 120
+        Address:
+          type: string
+          maxLength: 120
+        Country:
+          type: string
+          maxLength: 50
+        Introduction:
+          type: string
+        Picture:
+          type: string
+          format: uri
+    PatchedComment:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        Title:
+          type: string
+          maxLength: 120
+        Body:
+          type: string
+        Photo:
+          type: string
+          format: uri
+        Store:
+          type: integer
+    PatchedReply:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        Title:
+          type: string
+          maxLength: 80
+        Body:
+          type: string
+        Picture:
+          type: string
+          format: uri
+        Area:
+          type: string
+          format: uuid
+    PatchedShop:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        Name:
+          type: string
+          maxLength: 120
+        Price:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        Address:
+          type: string
+          maxLength: 120
+        Country:
+          type: string
+          maxLength: 50
+        Rating:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        Introduction:
+          type: string
+        Picture:
+          type: string
+          format: uri
+    PatchedUserDetails:
+      type: object
+      description: User model w/o password
+      properties:
+        pk:
+          type: integer
+          readOnly: true
+          title: ID
+        username:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          pattern: ^[\w.@+-]+$
+          maxLength: 150
+        email:
+          type: string
+          format: email
+          readOnly: true
+          title: Email address
+        first_name:
+          type: string
+          maxLength: 150
+        last_name:
+          type: string
+          maxLength: 150
+    Register:
+      type: object
+      properties:
+        username:
+          type: string
+          maxLength: 150
+          minLength: 1
+        email:
+          type: string
+          format: email
+        password1:
+          type: string
+          writeOnly: true
+        password2:
+          type: string
+          writeOnly: true
+      required:
+      - password1
+      - password2
+      - username
+    Reply:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        Title:
+          type: string
+          maxLength: 80
+        Body:
+          type: string
+        Picture:
+          type: string
+          format: uri
+        Area:
+          type: string
+          format: uuid
+      required:
+      - Area
+      - Body
+      - Picture
+      - Title
+      - id
+    ResendEmailVerification:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+    RestAuthDetail:
+      type: object
+      properties:
+        detail:
+          type: string
+          readOnly: true
+      required:
+      - detail
+    Shop:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        Name:
+          type: string
+          maxLength: 120
+        Price:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        Address:
+          type: string
+          maxLength: 120
+        Country:
+          type: string
+          maxLength: 50
+        Rating:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        Introduction:
+          type: string
+        Picture:
+          type: string
+          format: uri
+      required:
+      - Address
+      - Country
+      - Introduction
+      - Name
+      - Picture
+      - Price
+      - Rating
+      - id
+    SocialLogin:
+      type: object
+      properties:
+        access_token:
+          type: string
+        code:
+          type: string
+        id_token:
+          type: string
+    Token:
+      type: object
+      description: Serializer for Token model.
+      properties:
+        key:
+          type: string
+          maxLength: 40
+      required:
+      - key
+    TokenObtainPair:
+      type: object
+      properties:
+        username:
+          type: string
+          writeOnly: true
+        password:
+          type: string
+          writeOnly: true
+        access:
+          type: string
+          readOnly: true
+        refresh:
+          type: string
+          readOnly: true
+      required:
+      - access
+      - password
+      - refresh
+      - username
+    TokenRefresh:
+      type: object
+      properties:
+        access:
+          type: string
+          readOnly: true
+        refresh:
+          type: string
+      required:
+      - access
+      - refresh
+    UserDetails:
+      type: object
+      description: User model w/o password
+      properties:
+        pk:
+          type: integer
+          readOnly: true
+          title: ID
+        username:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          pattern: ^[\w.@+-]+$
+          maxLength: 150
+        email:
+          type: string
+          format: email
+          readOnly: true
+          title: Email address
+        first_name:
+          type: string
+          maxLength: 150
+        last_name:
+          type: string
+          maxLength: 150
+      required:
+      - email
+      - pk
+      - username
+    VerifyEmail:
+      type: object
+      properties:
+        key:
+          type: string
+          writeOnly: true
+      required:
+      - key
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
+    jwtAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

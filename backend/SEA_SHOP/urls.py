@@ -21,12 +21,25 @@ from rest_framework_simplejwt.views import (
 from .views import FacebookLogin
 from django.contrib import admin
 from django.urls import path, include
-from django.conf import settings  
-from django.conf.urls.static import static  
+from django.conf import settings
+from django.conf.urls.static import static
 from .views import GoogleLogin
 from .views import Home
+from drf_spectacular.views import (
+    SpectacularAPIView,
+    SpectacularRedocView,
+    SpectacularSwaggerView,  # new
+)
+
+
+class specialView(SpectacularAPIView, SpectacularSwaggerView):
+    pass
+
+
 urlpatterns = [
-    path('', Home.as_view(), name='home'),
+    # path('', Home.as_view(), name='home'),
+    path('',
+         SpectacularSwaggerView.as_view(url_name="schema"), name="swagger-ui"),
     path('admin/', admin.site.urls),
     path('dj-rest-auth/', include('dj_rest_auth.urls')),
     path('dj-rest-auth/registration/', include('dj_rest_auth.registration.urls')),
@@ -34,7 +47,9 @@ urlpatterns = [
     path('dj-rest-auth/google/', GoogleLogin.as_view(), name='google_login'),
     path('api-jwt/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api-jwt/token/refresh/', TokenRefreshView.as_view()),
-    path('apis/', include('Apis.urls'), name='application-apis'),
-]+ static(
+    path('api/', include('Apis.urls'), name='application-apis'),
+
+
+] + static(
     settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
 )
