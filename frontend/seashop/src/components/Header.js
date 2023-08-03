@@ -1,9 +1,8 @@
-import React/*, { useContext } */ from 'react';
+import React, { useContext } from 'react';
 import '../App.css';
 import { useNavigate } from 'react-router-dom';
-//import Authcontext from '../context/AuthContext';
+import Authcontext from '../context/AuthContext';
 function Header() {
-    //  let { user, logoutUser } = useContext(Authcontext)
     const navigate = useNavigate();
     const handleClickHome = () => {
         navigate('/');
@@ -31,6 +30,8 @@ function Header() {
             <button className='title' onClick={handleClickFood}>美食聚落</button>
             <button className='title' onClick={handleClickShop}>特色店家</button>
             <button className='title' onClick={handleClickLogin}>登入頁面</button>
+
+            <br />
 
             <br />
 
