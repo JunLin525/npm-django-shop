@@ -2,7 +2,7 @@
   "name": "seashop",
   "version": "0.1.0",
   "private": true,
-  "home": "https://github.com/JunLin525/SEA_SHOP/tree/main/frontend/seashop",
+  "home": "https://github.com/junLin525/SEA_SHOP/tree/main/frontend/seashop",
   "dependencies": {
     "@clerk/clerk-react": "^4.23.1",
     "@testing-library/jest-dom": "^5.17.0",
