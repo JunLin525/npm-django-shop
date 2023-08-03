@@ -39,12 +39,12 @@ function Food() {
                 <p>這是一個分享東南亞聚落地景的頁面，歡迎分享你所知所了解的區域，讓更多喜愛嘗鮮的人們前往。</p>
 
                 <ul>
-                {food.map(item => (
-                    <li className='book_item' key={item.pk}>
+                    {food.map(item => (
+                        <li className='book_item' key={item.pk}>
                             <div className='book_back'>
                                 <div className='book_info'>
-                                <Link to={`http://170.187.229.248:8000/api/foodie-Area/Area-Detail/${item.pk}`} > {item.Name}</Link>
-                                <div className='author'>地址：{item.Address}</div>
+                                    <Link to={`http://170.187.229.248:8000/api/foodie-Area/Area-Detail/${item.pk}`} > {item.Name}</Link>
+                                    <div className='author'>地址：{item.Address}</div>
                                     <div className='publisher'>國家：{item.Country}</div>
                                     <div className='ISBN'>介紹:{item.Introduction}</div>
                                     <img src={item.Picture} alt="Book Cover" style={{ width: '200px', heigh: '200px' }} />

@@ -7,6 +7,7 @@ import Food from './pages/Food';
 import About from './pages/About';
 import Shop from './pages/Shop';
 import Login from './pages/Login';
+import FoodList from './pages/FoodList';
 function App() {
   return (
     <Router>
@@ -17,6 +18,7 @@ function App() {
           <Route path="/About" element={<About />} />
           <Route path="/Shop" element={<Shop />} />
           <Route path="/Login" element={<Login />} />
+          <Route path="/Food/List/${foodID}" element={<FoodList />} />
         </Routes >
       </AuthProvider>
     </Router >
