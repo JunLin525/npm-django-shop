@@ -5,8 +5,8 @@ from drf_spectacular.views import (
     SpectacularSwaggerView,
 )
 urlpatterns = [
-    path('Locate/', include("Locate.urls")),
-    path('foodie-Area/', include("foodie.urls")),
+    path('Restaurant/', include("Locate.urls")),
+    path('SouthEastAsia-In-Taiwan/', include("foodie.urls")),
     path('schema/', SpectacularAPIView.as_view(), name="schema"),
     path('schema/swagger-ui/',
          SpectacularSwaggerView.as_view(url_name="schema"), name="swagger-ui"),
