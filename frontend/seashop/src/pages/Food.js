@@ -12,7 +12,7 @@ function Food() {
     const fetchData = async () => {
         try {
             const authTokens = JSON.parse(localStorage.getItem('authTokens')); // 從 localStorage 中獲取 Access Token
-            const response = await fetch('http://170.187.229.248:8000/api/foodie-Area/Area-List', {
+            const response = await fetch('http://170.187.229.248:8000/api/SouthEastAsia-In-Taiwan/List', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
